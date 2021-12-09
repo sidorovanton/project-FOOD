@@ -20,6 +20,7 @@ window.addEventListener("DOMContentLoaded", () => {
     hideTabContent();        
     showTabContenr();
 
+
     tabsParent.addEventListener("click", (event) => {
         const target = event.target;
 
@@ -34,3 +35,4 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+//fsdfs
