@@ -25,7 +25,7 @@ window.addEventListener("DOMContentLoaded", () => {
         const target = event.target;
 
         if (target && target.classList.contains("tabheader__item")){
-            tabs.forEach((item, i) => {
+            tabs.forEach(( item, i ) => {
                 if (target == item){
                     hideTabContent();
                     showTabContenr(i);
@@ -36,7 +36,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // Timer
 
-    const timerOover = "2022-01-01";
+    const timerOover = "2021-12-16";
 
     function getTimeRemaining(endtime){
         const t = Date.parse(endtime) - Date.parse(new Date()),
@@ -54,23 +54,36 @@ window.addEventListener("DOMContentLoaded", () => {
         };
     }
 
+    
+
     function setClock(index, endtime){
+
+
         const timer = document.querySelector(index),
-            days = timer.querySelector("#days"),
-            hours = timer.querySelector("hours"),
-             minutes = timer.querySelector("minutes"),
-             seconds = timer.querySelector("seconds"),
-             timeInterval = setInterval(updateClock,1000);
+        days = timer.querySelector("#days"),
+        hours = timer.querySelector("#hours"),
+        minutes = timer.querySelector("#minutes"),
+        seconds = timer.querySelector("#seconds"),
+        timeInterval = setInterval(updateClock,1000);
+
+        updateClock();
+
+        function addZero(num){
+            if(num<10 && num >= 0){
+                return "0" + num;
+            }
+            return num;
+        }
     
           
         function updateClock(){
-            const t = getTimeRemaining(endtime);
-            days.innerHTML = t.days;
-            hours.innerHTML = t.hours;
-            minutes.innerHTML = t.minutes;
-            seconds.innerHTML = t.seconds;
+            let t = getTimeRemaining(endtime);
+            days.innerHTML = addZero(t.days);
+            hours.innerHTML = addZero(t.hours);
+            minutes.innerHTML = addZero(t.minutes);
+            seconds.innerHTML = addZero(t.seconds);
 
-             if (t <= 0) {
+             if (t.total <= 0) {
                 clearInterval(timeInterval);
             }
         }      
